@@ -11,8 +11,8 @@ const animationLeave = (container) => {
     })
 
     tl
-    .fromTo(animate, { yPercent:0, stagger:0.05}, {yPercent:-200, opacity:0 }, 0)
-    .fromTo(animate2, { yPercent:0, stagger:0.05}, {yPercent:-200, opacity:0 }, 0)
+    .fromTo(animate, { yPercent:0, stagger:0.05}, {yPercent:-300, opacity:0 }, 0)
+    .fromTo(animate2, { yPercent:0, stagger:0.05}, {yPercent:-300, opacity:0 }, 0)
 
     return tl;
 

@@ -301,7 +301,7 @@ header {
   flex-direction: row;
   align-items: center;
   border-radius: 20px;
-  padding: 5px 10px;
+  padding: 1px 10px;
   text-decoration: none;
   transition: all 100ms ease-in-out;
 }
@@ -393,4 +393,8 @@ header {
 
 .skillColor{
   color: var(--main-text-color)
+}
+
+.hide{
+  visibility: hidden;
 }

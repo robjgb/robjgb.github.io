@@ -19,6 +19,18 @@ function updateMenu(url) {
     }
 }
 
+const animationEnterOnce = (container) => {
+
+    const tl = gsap.timeline({
+    })
+
+    return tl
+     .from('.nav-animate', { autoAlpha:0, duration: 1}, 1)
+     .fromTo(container, {y: -100,ease: "power4.out", delay: 3,skewY: -10,stagger: {amount: 0.3}, opacity: 0},
+    {y:0,opacity: 1, skewY: 0}, 1)
+
+}
+
 // hooks that will be triggered before any page transition
 // meaning your menu active class will be updated before going to the next page
 barba.hooks.before((data) => {
@@ -28,12 +40,17 @@ barba.hooks.before((data) => {
 barba.init({
     preventRunning: true,
     transitions: [{
-        name: 'default-transition',
-            once({next}) {
+            async once(data) {
+                console.log("before");
+                const body = document.querySelector('body');
+                body.classList.remove('hide');
+                body.classList.add('noHover');
+                await animationEnterOnce(data.next.container);
                 console.log("once");
             },
-            afterOnce({next}){
-                animationEnter(next.container);
+            afterOnce(){
+                const body = document.querySelector('body');
+                body.classList.remove('noHover');
             },
             leave: ({current}) =>
                 animationLeave(current.container),
