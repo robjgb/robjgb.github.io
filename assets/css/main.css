@@ -2,7 +2,21 @@ html, html[data-theme="light"] {
   --link-color: black;
   --main-background-color: #eee7e0;
   --main-text-color: black;
+  --gradient-color1:  var(--bs-link-hover-color);   
+  --gradient-color2: #f0e047;  
+  --gradient-color3: #45a6cc;
+
 }
+
+html[data-theme="dark"] {
+  --link-color: hsl(0, 0%, 95%); 
+  --main-background-color: #333333;
+  --main-text-color: hsl(0, 0%, 95%); 
+  --gradient-color1: #582900;
+  --gradient-color2: #302b00;  
+  --gradient-color3: #003b52;
+}
+
 
 .section-background-wrap{
   --mask: linear-gradient(to bottom, 
@@ -19,12 +33,12 @@ html, html[data-theme="light"] {
 }
 
 #gradient-canvas {
-  opacity:0.3;
+  opacity:0.4;
   width:100%;
   height:50%;
-  --gradient-color-1: var(--bs-link-hover-color);
-  --gradient-color-2: #f0e047; 
-  --gradient-color-3: #45a6cc;  
+  --gradient-color-1: var(--gradient-color1);
+  --gradient-color-2: var(--gradient-color2);
+  --gradient-color-3: var(--gradient-color3);
   --gradient-color-4: var(--main-background-color);  
   --scale: 1;
 }
@@ -42,13 +56,6 @@ html[data-theme="light"] .switch-wrapper .toggle-wrapper #theme-toggle::after {
     background-repeat: no-repeat;
     background-position: center; 
   }
-
-html[data-theme="dark"] {
-  --link-color: hsl(0, 0%, 95%); 
-  --main-background-color: #333333;
-  --main-text-color: hsl(0, 0%, 95%); 
-}
-
 
 html[data-theme="dark"] .switch-wrapper .toggle-wrapper  #theme-toggle::after {
     left: auto !important;
@@ -83,8 +90,8 @@ html[data-theme="dark"] .switch-wrapper .toggle-wrapper  #theme-toggle::after {
 
 body {
     font-family: 'Urbanist', serif;
-	background-color: var(--main-background-color);
-	color: var(--main-text-color);
+    background-color: var(--main-background-color);
+    color: var(--main-text-color);
     transition: background-color .5s;
 }
 
@@ -100,7 +107,7 @@ h1, h2, h3{
 }
 
 p{
-    opacity: 0.85;
+    opacity: 0.75;
 }
 
 p > strong p{
@@ -250,13 +257,7 @@ header {
   max-width: 100%;
   overflow: hidden;
 
-  --mask: linear-gradient(right, 
-  rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 40%, 
-  rgba(0,0,0, 0) 95%, rgba(0,0,0, 0) 0), 
-  repeating-linear-gradient(left, 
-  rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 40%, 
-  rgba(0,0,0, 0) 95%, rgba(0,0,0, 0) 0)   100% 50% / 100% 100% repeat-x;
-
+  --mask: linear-gradient(to right, transparent 1%, #000 2%, #000 99%, transparent 100%);
   -webkit-mask: var(--mask); 
   mask: var(--mask);
 }
@@ -371,3 +372,25 @@ header {
     transition: transform var(--hoverTransition, var(--arrowHoverTransition));
 }
 
+.compress {
+  max-height: 70vh;
+  overflow: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.compress::-webkit-scrollbar {
+  display: none;
+}
+
+.experienceGroup li {
+    list-style-type: none;
+}
+
+.experienceGroup{
+  padding-left: 0;
+}
+
+.skillColor{
+  color: var(--main-text-color)
+}
