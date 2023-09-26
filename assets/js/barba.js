@@ -25,9 +25,10 @@ const animationEnterOnce = (container) => {
     })
 
     return tl
-     .from('.nav-animate', { autoAlpha:0, duration: 1}, 1)
+     .from('.nav-animate-title', { autoAlpha:0, duration: 1}, 1)
+     .from('.nav-animate', { autoAlpha:0, duration: 1}, 2)
      .fromTo(container, {y: -100,ease: "power4.out", delay: 3,skewY: -10,stagger: {amount: 0.3}, opacity: 0},
-    {y:0,opacity: 1, skewY: 0}, 1)
+    {y:0,opacity: 1, skewY: 0}, 2)
 
 }
 

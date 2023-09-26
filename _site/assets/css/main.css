@@ -396,5 +396,6 @@ header {
 }
 
 .hide{
-  visibility: hidden;
+  opacity: 0;
+  transition: ease-in-out;
 }
