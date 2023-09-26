@@ -36,15 +36,19 @@ function modeSwitcher() {
 		document.documentElement.setAttribute('data-theme', 'dark');
 		sessionStorage.setItem('theme', 'dark');
 	}
+	gradient.disconnect();
+	gradient.initGradient("#gradient-canvas");
 }
 
 if (theme === "dark") {
 	document.documentElement.setAttribute('data-theme', 'dark');
 	sessionStorage.setItem('theme', 'dark');
+	gradient.disconnect();
+	gradient.initGradient("#gradient-canvas");
+
 } else if (theme === "light") {
 	document.documentElement.setAttribute('data-theme', 'light');
 	sessionStorage.setItem('theme', 'light');
+	gradient.disconnect();
+	gradient.initGradient("#gradient-canvas");
 }
-
-
-
