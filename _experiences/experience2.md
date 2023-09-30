@@ -11,7 +11,7 @@ skills:
 -   Node.js
 -   Express
 -   Python
-timeStart: June. 2022
+timeStart: June 2022
 timeEnd: Sept. 2022
 link: https://dev-theheadstarter.netlify.app/
 ---

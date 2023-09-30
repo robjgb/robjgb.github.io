@@ -9,6 +9,6 @@ skills:
 -   Level Design
 -   AI
 timeStart: Jan. 2022
-timeEnd: May. 2022
+timeEnd: May 2022
 link: https://www.cppvr.org/
 ---
