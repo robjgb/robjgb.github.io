@@ -1,0 +1,58 @@
+<div class="p-4 m-4 glass">
+
+    <div class="row">
+        <figure class="col-4 h-50 rounded">
+            <img class="col" src="{{project.imageURL}}" alt="" />   
+        </figure>
+        <div class="col">     
+            <h3 class="">
+                <div>
+                    <a
+                        class=""
+                        href="{{project.link}}"
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label=" {{project.project}}"
+                    >
+                        <span>
+                            {{project.project}}
+                            <span class="d-inline-block">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    class="d-inline-block h-4 w-4"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                                        clip-rule="evenodd"
+                                    ></path>
+                                </svg>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+            </h3>
+            <p class="mt-2 fs-sm">
+                {{project.description}}
+            </p>
+
+            {% if project.link2 %}
+                <a class="" href="{{project.link2}}" target="_blank" rel="noreferrer">
+                    {{project.link2Title}}
+                <svg class="HoverArrow" width="10" height="10" aria-hidden="true"><g fill-rule="evenodd"><path class="HoverArrow__linePath" d="M0 5h7"/><path class="HoverArrow__tipPath" d="m1 1 4 4-4 4"/></g></svg> 
+              </a>  
+              {% endif  %}
+
+            <ul class="mt-2 d-flex flex-row flex-wrap" aria-label="Technologies used">
+                {% for skill in project.skills -%}
+                    <li class="mr-1.5 mt-2"><div class="d-flex flex-row align-items-center rounded bg-aqua px-2 me-1 skillColor fs-sm" style="--bs-bg-opacity: .5;">{{skill}}</div></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+ 

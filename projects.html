@@ -3,8 +3,17 @@ layout: default
 title: projects
 ---
 
-<h1 class="reveal-animate">Test</h1>
-<div class="reveal-animate d-flex flex-row align-items-center">
+<div class="compress">
+  <ol class="experienceGroup">
+    {% for project in site.projects %}
+    <li class="mb-6 reveal-animate-2">
+      {% include project.html %}
+    </li>
+    {% endfor %}
+  </ol>
+</div>
+
+<div class="reveal-animate d-flex flex-row align-items-center mt-3">
     <a class="navigate-link" href="/experience">
         <svg class="HoverArrow2" width="10" height="10" aria-hidden="true"><g fill-rule="evenodd"><path class="HoverArrow__linePath2" d="M2 5h7"/><path class="HoverArrow__tipPath2" d="m 8 1 l -4 4 l 4 4"/></g></svg> 
         02

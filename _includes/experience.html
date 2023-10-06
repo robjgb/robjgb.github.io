@@ -1,8 +1,8 @@
 <div class=" pb-1">
     <div
-        class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"
+        class="absolute hidden rounded-md"
     ></div>
-    <header class="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2" aria-label="{{experience.timeStart}} to {{experience.timeEnd}}">
+    <header class="z-10 mb-2 mt-1" aria-label="{{experience.timeStart}} to {{experience.timeEnd}}">
         {{experience.timeStart}}
         — 
         {{experience.timeEnd}}
@@ -11,23 +11,22 @@
         <h3 class="">
             <div>
                 <a
-                    class="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base"
+                    class=""
                     href="{{experience.link}}"
                     target="_blank"
                     rel="noreferrer"
                     aria-label=" {{experience.position}}"
                 >
-                    <span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
                     <span>
                         {{experience.position}}
                         ·<!-- -->
-                        <span class="inline-block">
+                        <span class="d-inline-block">
                             {{experience.company}}
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
-                                class="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px"
+                                class="d-inline-block h-4 w-4"
                                 aria-hidden="true"
                             >
                                 <path
@@ -41,12 +40,12 @@
                 </a>
             </div>
         </h3>
-        <p class="mt-2 text-sm leading-normal">
+        <p class="mt-2">
             {{experience.description}}
         </p>
         <ul class="mt-2 d-flex flex-row flex-wrap" aria-label="Technologies used">
             {% for skill in experience.skills -%}
-                <li class="mr-1.5 mt-2"><div class="d-flex flex-row  align-items-center rounded bg-aqua px-3 py-1 me-2 skillColor" style="--bs-bg-opacity: .5;">{{skill}}</div></li>
+                <li class="mr-1.5 mt-2"><div class="d-flex flex-row align-items-center rounded bg-aqua px-3 py-1 me-2 skillColor" style="--bs-bg-opacity: .5;">{{skill}}</div></li>
             {% endfor %}
         </ul>
     </div>

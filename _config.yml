@@ -55,4 +55,5 @@ exclude:
   - vendor/ruby/
 
 collections:
-  - experiences
+  projects:
+  experiences:
