@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>contact</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +59,7 @@
 
     <ul class="ml-1 mt-8 d-flex items-center nav-animate" aria-label="Social media">
         <li class="me-3">
-            <a class="block hover:text-slate-200" href="https://github.com/robjgb" target="_blank" rel="noreferrer">
+            <a class="d-block" href="https://github.com/robjgb" target="_blank" rel="noreferrer">
                 <span class="visually-hidden ">GitHub</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="h-6 w-6" aria-hidden="true">
                     <path
@@ -68,7 +69,7 @@
             </a>
         </li>
         <li class="me-3">
-            <a class="block hover:text-slate-200" href="https://www.linkedin.com/in/robert-balatbat/" target="_blank" rel="noreferrer">
+            <a class="d-block" href="https://www.linkedin.com/in/robert-balatbat/" target="_blank" rel="noreferrer">
                 <span class="visually-hidden ">LinkedIn</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6" aria-hidden="true">
                     <path
@@ -105,13 +106,69 @@
                             <h1 class="fs-50">contact<span>&nbsp;</span> </h1>
                         </div>
                     </div>
-                    <h1 class="reveal-animate">Test</h1>
-<div class="reveal-animate d-flex flex-row ">
+                    <form>
+  <div class="form-floating mb-4 reveal-animate-2">
+    <input name="Email" type="email" id="textInputExample" class="form-control" placeholder="Email" required>
+    <label for="textInputExample">Enter email</label>
+  </div>
+
+  <div class="form-floating mb-4 reveal-animate-2">
+    <textarea name="Enter message" type="text" id="textareaExample" class="form-control" placeholder="Enter message" style="height: 150px" required></textarea>
+    <label for="textareaExample">Enter message</label>
+  </div>
+
+  <button id="formBtn" class="form-floating mb-4 reveal-animate-2 btn btn-sm rounded-pill customBtn" type="submit" onclick="send(this); return false;">
+    <span id="spinner" class="spinner-border spinner-border-sm d-none me-3" role="status" aria-hidden="true" class="hidden"></span>
+    <span id="loadingText" class="d-none">Loading...</span>
+    <span id="sendText" class="">Send</span>
+  </button>
+</form>
+
+<div class="reveal-animate d-flex flex-row mt-3">
     <a class="navigate-link" href="/projects">
         <svg class="HoverArrow2" width="10" height="10" aria-hidden="true"><g fill-rule="evenodd"><path class="HoverArrow__linePath2" d="M2 5h7"/><path class="HoverArrow__tipPath2" d="m 8 1 l -4 4 l 4 4"/></g></svg> 
         03
       </a>  
 </div>
+
+
+<script>
+  function send(e) {
+    const url = "https://script.google.com/macros/s/AKfycbwkKI8hCSw3fFh674qDHeUR7k0EgxiKvP5w0Vmk_o9axOL4meQvLs1g8BJKo24XLn-nWw/exec"; 
+
+    const obj = [...e.parentNode].reduce((o, f) => (o[f.name] = f.value, o), {});
+    const query = new URLSearchParams(obj); 
+
+    var formElement1 = document.getElementById("textInputExample");
+    var formElement2 = document.getElementById("textareaExample");
+    var formBtn = document.getElementById("formBtn");
+    var spinner = document.getElementById("spinner");
+    var loadingText = document.getElementById("loadingText");
+    var sendText = document.getElementById("sendText");
+
+    formElement1.setAttribute("disabled", "");
+    formElement2.setAttribute("disabled", "");
+    formBtn.setAttribute("disabled", "");
+    spinner.classList.remove("d-none");
+    loadingText.classList.remove("d-none");
+    sendText.classList.add("d-none");
+
+    fetch(url + "?" + query, { method: "POST" })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        console.log(query);
+
+        formElement1.removeAttribute("disabled");
+        formElement2.removeAttribute("disabled");
+        formBtn.removeAttribute("disabled");
+        spinner.classList.add("d-none");
+        loadingText.classList.add("d-none");
+        sendText.classList.remove("d-none");
+        alert(res.result);
+      });
+  }
+</script>
 
 
                 </main>

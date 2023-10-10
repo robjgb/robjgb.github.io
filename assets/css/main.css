@@ -416,3 +416,23 @@ header {
   -webkit-backdrop-filter: blur( 4.5px );
   border-radius: 10px;
 }
+
+.customBtn {
+  background-color: var(--main-text-color) ;
+  color: var(--main-background-color);
+}
+
+.customBtn:hover {
+  background-color: var(--bs-link-hover-color);
+}
+
+.modal-dialog {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  bottom: 0;
+  left: 0;
+  z-index: 10040;
+  overflow: auto;
+  overflow-y: auto;
+}
