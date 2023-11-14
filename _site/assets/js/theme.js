@@ -52,3 +52,4 @@ if (theme === "dark") {
 	gradient.disconnect();
 	gradient.initGradient("#gradient-canvas");
 }
+
