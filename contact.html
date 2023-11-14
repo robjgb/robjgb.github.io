@@ -2,7 +2,7 @@
 layout: default
 title: contact
 ---
-<form>
+<form method="POST" onsubmit="send(this);return false;">
   <div class="form-floating mb-4 reveal-animate-2">
     <input name="Email" type="email" id="textInputExample" class="form-control" placeholder="Email" required>
     <label for="textInputExample">Enter email</label>
@@ -13,7 +13,7 @@ title: contact
     <label for="textareaExample">Enter message</label>
   </div>
 
-  <button id="formBtn" class="form-floating mb-4 reveal-animate-2 btn btn-sm rounded-pill customBtn" type="submit" onclick="send(this); return false;">
+  <button id="formBtn" class="form-floating mb-4 reveal-animate-2 btn btn-sm rounded-pill customBtn" type="submit" onsubmit="">
     <span id="spinner" class="spinner-border spinner-border-sm d-none me-3" role="status" aria-hidden="true" class="hidden"></span>
     <span id="loadingText" class="d-none">Loading...</span>
     <span id="sendText" class="">Send</span>
@@ -32,7 +32,7 @@ title: contact
   function send(e) {
     const url = "https://script.google.com/macros/s/AKfycbwkKI8hCSw3fFh674qDHeUR7k0EgxiKvP5w0Vmk_o9axOL4meQvLs1g8BJKo24XLn-nWw/exec"; 
 
-    const obj = [...e.parentNode].reduce((o, f) => (o[f.name] = f.value, o), {});
+    const obj = [...e].reduce((o, f) => (o[f.name] = f.value, o), {});
     const query = new URLSearchParams(obj); 
 
     var formElement1 = document.getElementById("textInputExample");
@@ -61,8 +61,20 @@ title: contact
         spinner.classList.add("d-none");
         loadingText.classList.add("d-none");
         sendText.classList.remove("d-none");
-        alert(res.result);
-      });
+        alert("Message has been sent successfully.");
+      })
+      .catch((error) =>{
+        formElement1.removeAttribute("disabled");
+        formElement2.removeAttribute("disabled");
+        formBtn.removeAttribute("disabled");
+        spinner.classList.add("d-none");
+        loadingText.classList.add("d-none");
+        sendText.classList.remove("d-none");
+        alert(error);
+
+      })
+      
+
   }
 </script>
 
