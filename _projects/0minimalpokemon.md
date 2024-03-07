@@ -7,5 +7,7 @@ skills:
 -   Tailwind CSS
 -   Rest API 
 -   HyperUI Library
+-   Vercel
+-   React Router
 imageURL: /assets/img/projects/minimalpokedex.png
 ---
