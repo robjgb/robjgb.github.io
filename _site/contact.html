@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NWSDRCV2');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>contact</title>
@@ -21,6 +28,10 @@
 </head>
 
 <body class="hide" data-barba="wrapper">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWSDRCV2"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <div class="container"> 
         <div class="section-background-wrap">
@@ -116,7 +127,7 @@
                             <h1 class="fs-50">contact<span>&nbsp;</span> </h1>
                         </div>
                     </div>
-                    <form method="POST" onsubmit="send(this);return false;">
+                    <form name="submit-to-google-sheet" >
   <div class="form-floating mb-4 reveal-animate-2">
     <input name="Email" type="email" id="textInputExample" class="form-control" placeholder="Email" required>
     <label for="textInputExample">Enter email</label>
@@ -127,7 +138,7 @@
     <label for="textareaExample">Enter message</label>
   </div>
 
-  <button id="formBtn" class="form-floating mb-4 reveal-animate-2 btn btn-sm rounded-pill customBtn" type="submit" onsubmit="">
+  <button id="formBtn" class="form-floating mb-4 reveal-animate-2 btn btn-sm rounded-pill customBtn" type="submit">
     <span id="spinner" class="spinner-border spinner-border-sm d-none me-3" role="status" aria-hidden="true" class="hidden"></span>
     <span id="loadingText" class="d-none">Loading...</span>
     <span id="sendText" class="">Send</span>
@@ -143,18 +154,24 @@
 
 
 <script>
-  function send(e) {
+  const form = document.forms['submit-to-google-sheet'];
+  console.log(form)
+
+  form.addEventListener('submit', e => {
+    console.log(e)
+    e.preventDefault()
     const url = "https://script.google.com/macros/s/AKfycbwkKI8hCSw3fFh674qDHeUR7k0EgxiKvP5w0Vmk_o9axOL4meQvLs1g8BJKo24XLn-nWw/exec"; 
+    // const obj = [...e].reduce((o, f) => (o[f.name] = f.value, o), {});
+    // const query = new URLSearchParams(obj); 
 
-    const obj = [...e].reduce((o, f) => (o[f.name] = f.value, o), {});
-    const query = new URLSearchParams(obj); 
-
-    var formElement1 = document.getElementById("textInputExample");
-    var formElement2 = document.getElementById("textareaExample");
-    var formBtn = document.getElementById("formBtn");
-    var spinner = document.getElementById("spinner");
-    var loadingText = document.getElementById("loadingText");
-    var sendText = document.getElementById("sendText");
+    let formElement1 = document.getElementById("textInputExample");
+    let formElement2 = document.getElementById("textareaExample");
+    let formBtn = document.getElementById("formBtn");
+    let spinner = document.getElementById("spinner");
+    let loadingText = document.getElementById("loadingText");
+    let sendText = document.getElementById("sendText");
+    let formData = new FormData(form);
+    console.log(formData);
 
     formElement1.setAttribute("disabled", "");
     formElement2.setAttribute("disabled", "");
@@ -163,11 +180,10 @@
     loadingText.classList.remove("d-none");
     sendText.classList.add("d-none");
 
-    fetch(url + "?" + query, { method: "POST" })
+    fetch(url, { method: "POST", body: formData})
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        console.log(query);
 
         formElement1.removeAttribute("disabled");
         formElement2.removeAttribute("disabled");
@@ -189,7 +205,7 @@
       })
       
 
-  }
+    })
 </script>
 
 
