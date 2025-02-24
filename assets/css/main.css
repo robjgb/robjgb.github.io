@@ -1,21 +1,64 @@
+@font-face {
+  font-family: 'PPMori';
+  src: url('../font/PPMori-Extralight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PPMori';
+  src: url('../font/PPMori-ExtralightItalic.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'PPMori';
+  src: url('../font/PPMori-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PPMori';
+  src: url('../font/PPMori-RegularItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'PPMori';
+  src: url('../font/PPMori-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PPMori';
+  src: url('../font/PPMori-SemiBoldItalic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+
 html, html[data-theme="light"] {
   --link-color: black;
-  --main-background-color: #eee7e0;
+  --main-background-color: #fffce1;
   --main-text-color: black;
-  --gradient-color1:  var(--bs-link-hover-color);   
-  --gradient-color2: #f0e047;  
-  --gradient-color3: #45a6cc;
+  --gradient-color1: #fffce1;   
+  --gradient-color2: #0e100f;  
+  --gradient-color3: #fffce1;
   --glass-color: rgba( 255, 255, 255, 0.6 );
 
 }
 
 html[data-theme="dark"] {
   --link-color: hsl(0, 0%, 95%); 
-  --main-background-color: #222222;
-  --main-text-color: hsl(0, 0%, 95%); 
-  --gradient-color1: #582900;
-  --gradient-color2: #302b00;  
-  --gradient-color3: #003b52;
+  --main-background-color: #0e100f;
+  --main-text-color: #fffce1; 
+  --gradient-color1: #0e100f;
+  --gradient-color2: #fffce1;  
+  --gradient-color3: #060606;
   --glass-color: rgba(24, 24, 24, 0.75);
 }
 
@@ -45,6 +88,23 @@ html[data-theme="dark"] {
   --scale: 1;
 }
 
+.noise-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;  
+  filter: contrast(170%) brightness(1000%);
+  mix-blend-mode: overlay; 
+
+  /* -webkit-animation: grain 7s steps(10) infinite;
+  animation: grain 7s steps(10) infinite; */
+  background-image: url(/assets/img/noise.png);
+  background-size: 200px;
+  background-repeat: repeat;
+  opacity: .25;
+  pointer-events: none;
+}
 
 .noHover{
     pointer-events: none;
@@ -99,10 +159,11 @@ html[data-theme="dark"] .switch-wrapper .toggle-wrapper  #theme-toggle::after {
 }
 
 body {
-    font-family: 'Urbanist', serif;
+    font-family: 'PPMori', serif;
     background-color: var(--main-background-color);
     color: var(--main-text-color);
     transition: background-color .5s;
+    letter-spacing: -.01em;
 }
 
 
@@ -110,9 +171,10 @@ a {
 	color: var(--link-color);
 }
 
-h1, h2, h3{
+h1, h2, h3, a {
     color: var(--main-text-color);
-    font-family: 'Instrument Sans', sans-serif;
+    font-family: 'PPMori', sans-serif;
+    letter-spacing: -.03em;
     font-weight: 600;
 }
 
@@ -127,8 +189,9 @@ p > strong p{
   
 h4, h5, h6 {
 	color: var(--main-text-color);
-    font-family: 'Instrument Sans', sans-serif;
-    font-weight: 500;
+    font-family: 'PPMori', sans-serif;
+    letter-spacing: -.01em;
+    font-weight: 400;
   }
 
 .noise {
@@ -168,8 +231,9 @@ ul {
 }
 
 .ui .logo {
-  font-family: 'Instrument Sans', sans-serif;
-  font-weight: 500;
+  font-family: 'PPMori', sans-serif;
+  font-weight: 600;
+  letter-spacing: -.03em;
   line-height: 3em;
   -webkit-text-stroke: 1px var(--main-text-color);
   text-decoration: none; 
@@ -253,12 +317,15 @@ header {
     opacity: 0.5;
 }
 .navbar-nav-link .number{
+    color: var(--bs-link-hover-color);   
+    display: inline-block; 
+    transform: rotate(270deg);
     font-size: small;
 }
 
 /*code to change background color*/
 .active {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: 'PPMori', sans-serif;
     opacity: 1 !important;
 }
 
@@ -310,10 +377,16 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-radius: 20px;
-  padding: 1px 10px;
+  justify-content: center;
+  text-align: center;
+  padding: 0px 10px;
   text-decoration: none;
   transition: all 100ms ease-in-out;
+  /* Define border width separately */
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--main-text-color);
+  border-radius: 50px;
 }
 
 .navigate-link:hover {
@@ -339,6 +412,8 @@ header {
     stroke-width: 2px;
     fill: none;
     stroke: currentColor;
+    display: inline-block;
+    vertical-align: middle; 
 }
 
 .HoverArrow__linePath {
@@ -415,6 +490,9 @@ header {
   backdrop-filter: blur( 4.5px );
   -webkit-backdrop-filter: blur( 4.5px );
   border-radius: 10px;
+  border: 1px solid rgba(8, 60, 130, 0.07);
+  box-shadow: 0rem 0rem 1.25rem rgba(30, 34, 40, 0.04);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .customBtn {
