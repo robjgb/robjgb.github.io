@@ -43,11 +43,13 @@
 
 html, html[data-theme="light"] {
   --link-color: black;
-  --main-background-color: #fffce1;
+  --main-background-color: #f2f0ed;
+  --secondary-background-color: #cfc9c2;
   --main-text-color: black;
-  --gradient-color1: #fffce1;   
+  --secondary-text-color: #0e100f; 
+  --gradient-color1: #f2f0ed;   
   --gradient-color2: #0e100f;  
-  --gradient-color3: #fffce1;
+  --gradient-color3: #f2f0ed;
   --glass-color: rgba( 255, 255, 255, 0.6 );
 
 }
@@ -55,9 +57,11 @@ html, html[data-theme="light"] {
 html[data-theme="dark"] {
   --link-color: hsl(0, 0%, 95%); 
   --main-background-color: #0e100f;
-  --main-text-color: #fffce1; 
+  --secondary-background-color: #cfc9c2;
+  --main-text-color: #f2f0ed; 
+  --secondary-text-color: #0e100f; 
   --gradient-color1: #0e100f;
-  --gradient-color2: #fffce1;  
+  --gradient-color2: #f2f0ed;  
   --gradient-color3: #060606;
   --glass-color: rgba(24, 24, 24, 0.75);
 }
@@ -128,29 +132,6 @@ html[data-theme="dark"] .switch-wrapper .toggle-wrapper  #theme-toggle::after {
     background-repeat: no-repeat;
     background-position: center; 
   }
-
-@media (prefers-color-scheme: dark) {
-    html, html[data-theme="dark"] {
-      --link-color: hsl(0, 0%, 95%); 
-      --main-background-color: #222222;
-      --main-text-color: hsl(0, 0%, 95%); 
-      --gradient-color1: #582900;
-      --gradient-color2: #302b00;  
-      --gradient-color3: #003b52;
-      --glass-color: rgba(24, 24, 24, 0.75);
-      
-    }
-
-    html[data-theme="light"] {
-      --link-color: black;
-      --main-background-color: #eee7e0;
-      --main-text-color: black;
-      --gradient-color1:  var(--bs-link-hover-color);   
-      --gradient-color2: #f0e047;  
-      --gradient-color3: #45a6cc;
-      --glass-color: rgba( 255, 255, 255, 0.6 );
-  } 
-}
 
 .backgroundGradient {
   height: 25%;
@@ -477,7 +458,8 @@ header {
 }
 
 .skillColor{
-  color: var(--main-text-color)
+  background-color: var(--secondary-background-color);
+  color: var(--secondary-text-color)
 }
 
 .hide {
@@ -490,9 +472,15 @@ header {
   backdrop-filter: blur( 4.5px );
   -webkit-backdrop-filter: blur( 4.5px );
   border-radius: 10px;
-  border: 1px solid rgba(8, 60, 130, 0.07);
+  border: 1px solid color-mix(in srgb, var(--main-text-color) 7%, transparent);
   box-shadow: 0rem 0rem 1.25rem rgba(30, 34, 40, 0.04);
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.glass:hover {
+  background: linear-gradient( var(--main-background-color), var(--main-background-color)) padding-box,
+  linear-gradient(color-mix(in srgb, var(--main-text-color) 7%, transparent) 49%,#f50 100%,#ff4800a3) border-box;
+
 }
 
 .customBtn {
@@ -593,5 +581,16 @@ header {
 .navbar-toggler:focus {
   outline: none;
   box-shadow: none;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  border: solid 1px transparent;
+  background: 
+    linear-gradient( white, white) padding-box,
+    linear-gradient(#e4e0dc 49%,#f50 100%,#ff4800a3) border-box;
 }
 
